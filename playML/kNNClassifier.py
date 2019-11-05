@@ -1,5 +1,6 @@
 import numpy as np
 from collections import Counter
+from .metrics import accuracy_score
 
 class KNNClassifier:
     def __init__(self, k):
@@ -22,6 +23,10 @@ class KNNClassifier:
         
         y_predict = [self._predict(x) for x in X_predict]
         return np.array(y_predict)
+
+    def score(self, X_test, Y_test):
+        Y_predict = self.predict(X_test)
+        return accuracy_score(Y_test, Y_predict)
 
     def _predict(self, x):
         assert x.shape[0] == self._X_train.shape[1], "the feature number of x must be equal to X_train."
