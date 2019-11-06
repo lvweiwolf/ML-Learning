@@ -1,4 +1,5 @@
 import numpy as np
+from .metrics import r2_score
 
 class SimpleLinearRegression1:
     def __init__(self):
@@ -62,6 +63,10 @@ class SimpleLinearRegression2:
         assert self.a_ is not None and self.b_ is not None, "must fit before predict!"
 
         return np.array([self._predict(x) for x in X_predict])
+
+    def score(self, X_test, Y_test):
+        Y_predict = self.predict(X_test)
+        return r2_score(Y_test, Y_predict)
 
     def _predict(self, X_single):
         return self.a_ * X_single + self.b_
