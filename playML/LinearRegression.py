@@ -19,10 +19,8 @@ class LinearRegression:
         return self
 
     def predict(self, X_predict):
-        assert self.interception_ is not None and self.coef_ is not None,\
-            "must fit before predict!"
-        assert X_predict.shape[1] == len(self.coef_),\
-            "the feature number of X_predict must be equal to X_train"
+        assert self.interception_ is not None and self.coef_ is not None, "must fit before predict!"
+        assert X_predict.shape[1] == len(self.coef_), "the feature number of X_predict must be equal to X_train"
         
         X_b = np.hstack([np.ones((len(X_predict), 1)), X_predict])
         return X_b.dot(self._theta)
