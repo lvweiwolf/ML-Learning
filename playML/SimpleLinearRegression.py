@@ -57,6 +57,7 @@ class SimpleLinearRegression2:
         self.b_ = y_mean - self.a_ * x_mean
         
         return self
+        
 
     def predict(self, X_predict):
         assert X_predict.ndim == 1, "Simple Linear Regressor can only solve single feature training data."
